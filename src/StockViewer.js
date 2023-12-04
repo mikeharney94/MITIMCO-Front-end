@@ -70,9 +70,14 @@ class StockViewer extends React.Component {
         return <div>
             {
                 this.state.errorText === "" ? "" :
-                <Alert variant="danger" data-bs-theme="dark" style={this.state.errorText.length > 100 ? {fontSize:"small"} :{}}>
-                    {this.state.errorText}
-                </Alert>
+                <div>
+                    <Alert variant="danger" data-bs-theme="dark" style={this.state.errorText.length > 100 ? {fontSize:"small"} :{}}>
+                        {this.state.errorText}
+                    </Alert>
+                    <InputGroup className="mb-3" style={{justifyContent:'center'}}>
+                        <Button type="primary" onClick={() => {this.setState({errorText:""})}}>Clear Error</Button>
+                    </InputGroup>
+                </div>
             }
             <InputGroup className="mb-3">
                 <InputGroup.Text id="basic-addon1">Stock</InputGroup.Text>
