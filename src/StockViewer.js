@@ -47,7 +47,7 @@ class StockViewer extends React.Component {
         try {
             const response = await fetch(url, requestOptions);
             const data = await this.attemptParseJSON(response);
-            if (data.status && data.status != 200) {
+            if (data.status && data.status !== 200) {
                 if (data.errors) {
                     this.setState({errorText:'Error: '+JSON.stringify(data.errors)});
                 } else {
@@ -63,7 +63,7 @@ class StockViewer extends React.Component {
     }
     async attemptParseJSON(response) {
         return response.text().then(function(text) {
-            return text && text[0] == "{" ? JSON.parse(text) : {status:500, errors:text}
+            return text && (text[0] == "{" || !!parseFloat(text)) ? JSON.parse(text) : {status:500, errors:text}
         })
     }
     render() {
@@ -122,8 +122,8 @@ class StockViewer extends React.Component {
                     <br/>
                     <Button variant="success" size="lg" onClick={() => {this.getData("GetReturn")}}>GetReturn</Button>
             </InputGroup>
-            {this.state.displayType == "GetAlpha" ? <AlphaResult result={this.state.data}></AlphaResult> : ''}
-            {this.state.displayType == "GetReturn" ? <GetReturnResult stock={document.getElementById('stock').value} result={this.state.data}></GetReturnResult> : ''}
+            {this.state.displayType === "GetAlpha" ? <AlphaResult result={this.state.data}></AlphaResult> : ''}
+            {this.state.displayType === "GetReturn" ? <GetReturnResult stock={document.getElementById('stock').value} result={this.state.data}></GetReturnResult> : ''}
         </div>;
     }
 }
