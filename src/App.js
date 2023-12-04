@@ -1,5 +1,4 @@
 import logo from './MITIMCO-Retina.png';
-import Button from 'react-bootstrap/Button';
 import StockViewer from './StockViewer.js';
 import './App.css';
 
