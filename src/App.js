@@ -1,22 +1,20 @@
-import logo from './logo.svg';
+import logo from './MITIMCO-Retina.png';
+import Button from 'react-bootstrap/Button';
+import StockViewer from './StockViewer.js';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <img src={logo} className="logo" alt="logo" /> API
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>
+          Enter parameters below to load stock data
+        </p>
+
+          <StockViewer></StockViewer>
       </header>
     </div>
   );
